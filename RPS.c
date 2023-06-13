@@ -6,9 +6,7 @@
 #include <unistd.h>
 
 int player_two_global_var =
-    0; // This has to be a global variable because it stores a randomized number
-       // which is generated within a function, which means it would be
-       // undeclared when the function is called upon.
+    0; 
 
 
 char player_one_output();
@@ -26,15 +24,13 @@ int zero;
 
 int main() {
   srand(time(NULL));
-  int win_amount; // How many wins a player can have until someone wins
+  int win_amount; 
   int repeat_var = 1;
-  int player_two_repeat =
-      1; // part of code which helps to make sure user enters 1 or 2 to choose
-         // computer or person to play against
+  int player_two_repeat = 1; 
   int player_one_score;
   int player_two_score;
-  int player_two; // the variable that allows users to play against a computer
-                  // or another person
+  int player_two; 
+                  
   char player_one_choice;
   char player_two_choice;
   
@@ -55,13 +51,13 @@ printf("\n\n");
 
 
   printf("Welcome to RocK 🪨, Paper 📄, Scissors ✂️  plus MORE! \n\n");
-  /*k*/ printf("RULES\n\n");
-  /*k*/ printf("1) To start you will enter the amount of points one must "
+  printf("RULES\n\n");
+  printf("1) To start you will enter the amount of points one must "
                "achieve to be labeled the WINNER! \n");
-  /*k*/ printf(
+  printf(
       "2) Select 1 to play against a friend or 2 to play against the CPU. \n");
-  /*k*/ printf("3) R = rock, P = paper, S = scissors, T = take, M = match, Z = zero, OR...\n");
-  /*k*/ printf("**************************\n\n");
+  printf("3) R = rock, P = paper, S = scissors, T = take, M = match, Z = zero, OR...\n");
+  printf("**************************\n\n");
 
   printf("Enter the amount of points needed to claim VICTORY!");
   scanf(" %d", &win_amount);
@@ -73,7 +69,7 @@ printf("\n\n");
     player_one_choice = '0';
     player_two_choice = '0';
 
-    while (player_two_repeat == 1) { // makes sure user enters a valid number
+    while (player_two_repeat == 1) { 
       printf("1. Human\n2. Computer\nPlease enter 1 or 2 : ");
       scanf(" %d", &player_two);
       if ((player_two == 1) || (player_two == 2)) {
@@ -86,21 +82,21 @@ printf("\n\n");
     }
     while ((player_one_score < win_amount) && (player_two_score < win_amount)) {
       player_one_choice =
-          player_one_output(); // calls on function (player_one_choice)
+          player_one_output(); 
       player_two_choice = player_two_output(
-          player_two); // calls on function (player_two_choice)
+          player_two); 
 
       printf("Player 1 : %c\nPlayer 2 : %c\n", player_one_choice,
-             player_two_choice); // prints both choices so players can compare
+             player_two_choice); 
       players_choice_comparison(
           player_one_choice, player_two_choice, &player_one_score,
-          &player_two_score); // compares players choices and increases the
-                              // winners points or prints 'tie'
+          &player_two_score); 
+                             
 
       printf("Player 1 score : %d\nPlayer 2 score : %d\n\n", player_one_score,
              player_two_score);
       score_comparison(player_one_score, player_two_score, &repeat_var,
-                       win_amount); // checks to see if there is a winner yet
+                       win_amount); 
 
       if (repeat_var == 2) {
         break;
@@ -151,7 +147,7 @@ char player_two_output(int player_two) {
   } else if (player_two == 2) {
 
     while (repeat_var ==
-           0) { // makes sure different random numbers are generated each time
+           0) { 
       tempory_rand_num = rand();
 
       if (tempory_rand_num == player_two_global_var) {
